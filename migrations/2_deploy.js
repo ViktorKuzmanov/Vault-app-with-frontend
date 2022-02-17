@@ -1,5 +1,5 @@
-const Valut = artifacts.require("Valut");
+const Vault = artifacts.require("Vault");
 
 module.exports = function (deployer, accounts) {
-  deployer.deploy(Valut, 30);
+  deployer.deploy(Vault, 30);
 };

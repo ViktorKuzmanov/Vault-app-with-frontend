@@ -1,20 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
-import Vault from './abis/Valut.json'
+import Vault from './abis/Vault.json'
 import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 
 function App() {
 
+  const [web3, setWeb3] = useState(null)
   const[vaultContract,  setVaultContract] = useState(null);
+  const[balanceInContract,  setBalanceInContract] = useState(null);
 
   useEffect( async () => {
-    loadWeb3()
-  });
+    loadBlockchainData()
+    console.log("aa")
+  }, []);
 
-  async function loadWeb3() {
+  async function loadBlockchainData() {
+
     console.log("use effect is called")
     const web3 = new Web3(window.ethereum);
+    setWeb3(web3)
 
     const networkId = await web3.eth.net.getId()
 
@@ -22,11 +27,14 @@ function App() {
     console.log("voa e adresata na contract-ot so go deployname - ", Vault.networks[networkId].address)
 
     setVaultContract(vaultContract)
+
+    let vaultContractBalance = await vaultContract.methods.balanceOfContract().call()
+    setBalanceInContract(vaultContractBalance / 1e18)
   }
 
   async function deposit () {
     // call deposit funcion
-    // await vaultContract.methods.deposit().send({ from: "0x06214f2E1e1896739D92F3526Bd496DC028Bd7F9",  value: "20000000000000000" })
+    await vaultContract.methods.deposit().send({ from: "0x06214f2E1e1896739D92F3526Bd496DC028Bd7F9",  value: "10000000000000000" })
 
     // check balance
     let vaultContractBalance = await vaultContract.methods.balanceOfContract().call()
@@ -37,6 +45,7 @@ function App() {
     <div>
       <input type="text" placeholder='Amount' />
       <button onClick={deposit}>Deposit</button>
+      <p>Balance in Contract : {balanceInContract} ether</p>
     </div>
   );
 }
