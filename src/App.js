@@ -12,8 +12,8 @@ function App() {
   const[amount,  setAmount] = useState(null);
 
   useEffect( async () => {
+    console.log("useEffect is called")
     loadBlockchainData()
-    console.log("aa")
   }, []);
 
   async function loadBlockchainData() {
