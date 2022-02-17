@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div>
-      <input type="text" placeholder='Amount' onChange={amountChanged}/>
+      <input type="text" placeholder='Amount in ether' onChange={amountChanged}/>
       <button onClick={deposit}>Deposit</button>
       <p>Balance in Contract : {balanceInContract} ether</p>
     </div>
