@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 import Vault from './abis/Vault.json'
 import React, { useState, useEffect } from 'react';
@@ -47,10 +47,15 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='center'>
+      <h1>Vault app</h1>
+      <img src={logo} className="App-logo" alt="logo" />
+      <br/>
       <input type="text" placeholder='Amount in ether' onChange={amountChanged}/>
+      <br/>   
       <button onClick={deposit}>Deposit</button>
-      <p>Balance in Contract : {balanceInContract} ether</p>
+      <br/>   
+      <span>Balance in Contract :</span> <h3>{balanceInContract} ether</h3>        
     </div>
   );
 }

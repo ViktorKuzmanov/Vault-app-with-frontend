@@ -2,7 +2,7 @@
 pragma solidity ^0.8.2;
 import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
 
-contract Vault is KeeperCompatibleInterface {
+contract Vault is KeeperCompatibleInteprface {
 
     address public owner;
 
