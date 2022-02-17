@@ -9,6 +9,7 @@ function App() {
   const [web3, setWeb3] = useState(null)
   const[vaultContract,  setVaultContract] = useState(null);
   const[balanceInContract,  setBalanceInContract] = useState(null);
+  const[amount,  setAmount] = useState(null);
 
   useEffect( async () => {
     loadBlockchainData()
@@ -34,16 +35,20 @@ function App() {
 
   async function deposit () {
     // call deposit funcion
-    await vaultContract.methods.deposit().send({ from: "0x06214f2E1e1896739D92F3526Bd496DC028Bd7F9",  value: "10000000000000000" })
+    await vaultContract.methods.deposit().send({ from: "0x06214f2E1e1896739D92F3526Bd496DC028Bd7F9",  value: amount.toString() })
 
     // check balance
     let vaultContractBalance = await vaultContract.methods.balanceOfContract().call()
     console.log("v1 balance = ", vaultContractBalance.toString())
   }
 
+  function amountChanged(e) {
+    setAmount(e.target.value * 1e18)
+  }
+
   return (
     <div>
-      <input type="text" placeholder='Amount' />
+      <input type="text" placeholder='Amount' onChange={amountChanged}/>
       <button onClick={deposit}>Deposit</button>
       <p>Balance in Contract : {balanceInContract} ether</p>
     </div>
