@@ -2,7 +2,7 @@
 pragma solidity ^0.8.2;
 import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
 
-contract Valut is KeeperCompatibleInterface {
+contract Vault is KeeperCompatibleInterface {
 
     address public owner;
 
@@ -17,7 +17,7 @@ contract Valut is KeeperCompatibleInterface {
     uint public immutable interval;
     uint public lastTimeStamp;
 
-    constructor(uint updateInterval) payable {
+    constructor(uint updateInterval) {
       interval = updateInterval;
       owner = msg.sender;
       lastTimeStamp = block.timestamp;
