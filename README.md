@@ -12,6 +12,7 @@ Defi app where user can deposit Ether into our smart contract and get paid perio
 ## Requirements
 - [NodeJS](https://nodejs.org/en/) version v14.17.0
 - [MetaMask](https://metamask.io/) Ethereum browser.
+- [Truffle](https://www.trufflesuite.com/docs/truffle/overview) (To create our project)
 
 ## Setting Up
 ### 1. Clone/Download the Repository:
