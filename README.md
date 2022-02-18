@@ -24,11 +24,10 @@ Defi app where user can deposit Ether into our smart contract and get paid perio
 
 ## Setting Up
 ### 1. Clone/Download the Repository:
-`$ git clone https://github.com/dappuniversity/yield-aggregator.git`
+`$ git clone linkFromRepo`
 
 ### 2. Install Dependencies:
 ```
-$ cd yield-aggregator
 $ npm install 
 ```
 
